@@ -20,6 +20,7 @@ cmdline = ["dep:anyhow", "dep:clap", "dep:env_logger"]
 default = ["cmdline", "progressbar"]
 progressbar = ["dep:indicatif"]
 rustls = ["curl/rustls"]
+ssl = ["curl/ssl"]
 
 [lib]
 path = "src/lib.rs"
