@@ -2,7 +2,7 @@ use chrono::NaiveDate;
 use chrono::NaiveDateTime;
 use chrono::NaiveTime;
 use conv::{NoError, ValueFrom};
-use curl::easy::Easy;
+use curl::easy::{Easy, IpResolve};
 use num_traits::ToPrimitive;
 use serde::Deserialize;
 use serde::Serialize;
@@ -294,6 +294,7 @@ impl PartialReader {
         easy.tcp_keepintvl(Duration::from_secs(60))?;
         easy.timeout(Duration::from_secs(60))?;
         easy.connect_timeout(Duration::from_secs(60))?;
+        easy.ip_resolve(IpResolve::V4)?;
         easy.nobody(true)?;
         easy.write_function(|data| Ok(data.len()))?;
         easy.perform()?;
