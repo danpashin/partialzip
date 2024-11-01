@@ -292,6 +292,8 @@ impl PartialReader {
         easy.tcp_keepalive(true)?;
         easy.tcp_keepidle(Duration::from_secs(120))?;
         easy.tcp_keepintvl(Duration::from_secs(60))?;
+        easy.timeout(Duration::from_secs(60))?;
+        easy.connect_timeout(Duration::from_secs(60))?;
         easy.nobody(true)?;
         easy.write_function(|data| Ok(data.len()))?;
         easy.perform()?;
